@@ -1,0 +1,92 @@
+$segment-length: 20px;
+$segment-width: 4px;
+$segment-h-padding: 5px;
+$segment-off-colour: rgb(50, 50, 50);
+$segment-on-colour: red;
+
+@keyframes fadeIn {
+	from {
+		background-color: $segment-off-colour;
+	}
+	to {
+		background-color: $segment-on-colour;
+	}
+}
+
+.colon {
+	display: inline-block;
+	width: 20px;
+	height: 150px;
+	position: relative;
+}
+
+.colon:before,
+.colon:after {
+	content: '';
+	display: block;
+	border-radius: 10px;
+	height: $segment-width;
+	width: $segment-width;
+	background-color: $segment-on-colour;
+	position: absolute;
+}
+
+.colon:before {
+	top: 20px;
+}
+
+.colon:after {
+	bottom: 100px;
+}
+
+.display {
+	display: inline-block;
+	width: 50px;
+	height: 150px;
+}
+
+.segment {
+	position: relative;
+	border-radius: 10px;
+	background-color: $segment-off-colour;
+
+	&--on {
+		animation: fadeIn 0.1s ease-in;
+		background-color: $segment-on-colour;
+	}
+
+	// Horizontal segments
+	&--0,
+	&--3,
+	&--6 {
+		width: $segment-length;
+		height: $segment-width;
+		left: $segment-h-padding;
+	}
+
+	// Vertical segments
+	&--1,
+	&--2,
+	&--4,
+	&--5 {
+		width: $segment-width;
+		height: $segment-length;
+	}
+
+	// Positioning
+	&--2,
+	&--5 {
+		bottom: $segment-length;
+		left: #{$segment-length + $segment-h-padding};
+	}
+
+	&--3,
+	&--4 {
+		bottom: $segment-length;
+	}
+
+	&--5,
+	&--6 {
+		bottom: #{$segment-length * 2};
+	}
+}

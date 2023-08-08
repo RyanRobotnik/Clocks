@@ -1,0 +1,55 @@
+$hand-colour: #afafaf;
+$second-hand-colour: red;
+
+.analog-clock {
+	position: relative;
+	background-color: grey;
+	width: 300px;
+	height: 300px;
+	border-radius: 50%;
+	text-align: center;
+	margin: 8px;
+}
+
+.analog-clock::after {
+	position: absolute;
+	background: white;
+	width: 6px;
+	height: 6px;
+	border-radius: 50%;
+	z-index: 2;
+	top: 50%;
+	left: 50%;
+	border: 2px solid white;
+	content: '';
+
+	transform: translate(-50%, -50%);
+}
+
+.hand {
+	position: absolute;
+	transform-origin: bottom;
+	background: $hand-colour;
+
+	&--hour {
+		width: 6px;
+		height: 60px;
+		top: 30%;
+		left: 49%;
+	}
+
+	&--minute {
+		width: 4px;
+		height: 80px;
+		top: 22.5%;
+		left: 49%;
+	}
+
+	&--second {
+		background: $second-hand-colour;
+		width: 2px;
+		height: 118px;
+		top: 10.5%;
+		left: 50%;
+	}
+}
